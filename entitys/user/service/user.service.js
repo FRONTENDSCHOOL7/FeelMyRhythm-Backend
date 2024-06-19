@@ -1,4 +1,4 @@
-import User from '../user.Schema';
+import User from '../user.Schema.js';
 
 const userService = {};
 

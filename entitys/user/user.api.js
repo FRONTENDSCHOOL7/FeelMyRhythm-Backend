@@ -1,7 +1,8 @@
 import express from 'express';
-import userRepository from './user.Repository';
-import userController from './controller/user.controller';
-import userService from './service/user.service';
+import userRepository from './user.Repository.js';
+import userController from './controller/user.controller.js';
+import userService from './service/user.service.js';
+import intercepter from '../../common/exception/http-exception.filter.js';
 
 const router = express.Router();
 
