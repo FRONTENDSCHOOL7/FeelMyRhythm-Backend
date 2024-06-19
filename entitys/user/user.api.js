@@ -16,4 +16,7 @@ router.post(
   intercepter
 );
 
+// 이메일 검증
+router.post('/emailvalid', userRepository.validEmail, intercepter);
+
 export default router;

@@ -12,7 +12,7 @@ userRepository.validEmail = async (req, res, next) => {
     const user = await User.findOne({ email });
 
     if (user) {
-      throw new Error('이미 가입된 이메일입니다.');
+      throw new Error('이미 가입된 이메일 주소입니다.');
     }
 
     req.user = user;
