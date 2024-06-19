@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import compression from 'compression';
+import indexRouter from './routes/index.js';
 
 const PORT = process.env.PORT || 5000;
 
@@ -25,6 +26,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(compression());
 app.use(cookieParser());
+
+app.use('/api', indexRouter);
 
 const mongoURI = process.env.LOCAL_DB_ADDRESS;
 
