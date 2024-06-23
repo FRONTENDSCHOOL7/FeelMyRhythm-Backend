@@ -15,7 +15,8 @@ userRepository.validEmail = async (req, res, next) => {
       throw new Error('이미 가입된 이메일 주소입니다.');
     }
 
-    req.user = user;
+    req.statusCode = 200;
+    req.data = '사용 가능한 이메일 입니다.';
   } catch (e) {
     req.statusCode = 400;
     req.error = e.message;

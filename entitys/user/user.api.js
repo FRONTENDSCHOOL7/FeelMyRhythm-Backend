@@ -3,6 +3,7 @@ import userRepository from './user.Repository.js';
 import userController from './controller/user.controller.js';
 import userService from './service/user.service.js';
 import intercepter from '../../common/exception/http-exception.filter.js';
+import upload from '../../multerConfig.js';
 
 const router = express.Router();
 
@@ -12,6 +13,7 @@ router.post(
   userRepository.validEmail,
   userController.emailRegister,
   userRepository.hashPassword,
+  upload.array('images', 1),
   userService.emailRegister,
   intercepter
 );
