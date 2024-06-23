@@ -21,4 +21,7 @@ router.post(
 // 이메일 검증
 router.post('/emailvalid', userRepository.validEmail, intercepter);
 
+// 프로필 정보 조회
+router.get('/');
+
 export default router;

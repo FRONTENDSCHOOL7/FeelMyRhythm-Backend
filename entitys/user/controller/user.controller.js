@@ -16,4 +16,5 @@ userController.emailRegister = async (req, res, next) => {
   }
   next();
 };
+
 export default userController;

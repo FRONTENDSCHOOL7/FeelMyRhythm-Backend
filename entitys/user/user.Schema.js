@@ -6,8 +6,12 @@ const userSchema = Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
-  kind: { type: String },
-  image: { type: String },
+  kind: { type: String, default: 'emailuser' },
+  image: { type: String, default: 'none' },
+  follwing: { type: Array, default: [] },
+  follower: { type: Array, default: [] },
+  followerCount: { type: Number, default: 0 },
+  followingCount: { type: Number, default: 0 },
 });
 
 userSchema.methods.toJSON = function () {
