@@ -9,7 +9,7 @@ userService.emailRegister = async (req, res, next) => {
 
     const { hashPassword } = req;
     const { email, name, kind = 'emailuser' } = req.body;
-    const image = req.files.map((file) => file.location);
+    const image = req.file.location;
 
     const newUser = new User({ email, password: hashPassword, name, kind, profileImage: image });
 

@@ -13,7 +13,7 @@ router.post(
   userRepository.validEmail,
   userController.emailRegister,
   userRepository.hashPassword,
-  upload.array('images', 1),
+  upload.single('image'),
   userService.emailRegister,
   intercepter
 );
