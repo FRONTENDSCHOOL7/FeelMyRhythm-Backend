@@ -1,11 +1,12 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
 const userSchema = Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  name: { type: String, required: true },
+  nickname: { type: String, required: true },
+  intro: { type: String },
   kind: { type: String },
   image: { type: String },
 });
@@ -17,6 +18,6 @@ userSchema.methods.toJSON = function () {
   return obj;
 };
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User;

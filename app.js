@@ -1,12 +1,12 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
-import helmet from 'helmet';
-import compression from 'compression';
-import indexRouter from './routes/index.js';
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+import helmet from "helmet";
+import compression from "compression";
+import indexRouter from "./routes/index.js";
 
 const PORT = process.env.PORT || 5000;
 
@@ -17,7 +17,7 @@ const app = express();
 app.use(helmet());
 
 const corsOption = {
-  origin: ['http://localhost:3000'],
+  origin: ["http://localhost:3000"],
   credentials: true,
 };
 app.use(cors(corsOption));
@@ -27,14 +27,14 @@ app.use(bodyParser.json());
 app.use(compression());
 app.use(cookieParser());
 
-app.use('/api', indexRouter);
+app.use("/api", indexRouter);
 
 const mongoURI = process.env.LOCAL_DB_ADDRESS;
 
 mongoose
   .connect(mongoURI)
-  .then(() => console.log('mongoose connected'))
-  .catch((err) => console.log('DB connection fail', err));
+  .then(() => console.log("mongoose connected"))
+  .catch((err) => console.log("DB connection fail", err));
 
 app.listen(PORT, () => {
   console.log(`connect Server ${PORT}`);
