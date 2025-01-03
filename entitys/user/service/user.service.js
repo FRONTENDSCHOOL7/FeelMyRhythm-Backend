@@ -1,4 +1,4 @@
-import User from "../user.Schema.js";
+import User from '../user.Schema.js';
 
 const userService = {};
 
@@ -8,10 +8,16 @@ userService.emailRegister = async (req, res, next) => {
     if (req.statusCode === 400) return next();
 
     const { hashPassword } = req;
-    const { email, name, kind = "emailuser" } = req.body;
+    const { email, nickname, kind = 'emailuser' } = req.body;
     const image = req.file.location;
 
-    const newUser = new User({ email, password: hashPassword, name, kind, profileImage: image });
+    const newUser = new User({
+      email,
+      password: hashPassword,
+      nickname,
+      kind,
+      profileImage: image,
+    });
 
     await newUser.save();
 
@@ -34,11 +40,11 @@ userService.nicknameValid = async (req, res, next) => {
     const valid = await User.findOne({ nickname });
 
     if (valid) {
-      throw new Error("이미 존재하는 닉네임입니다.");
+      throw new Error('이미 존재하는 닉네임입니다.');
     }
 
     req.statusCode = 200;
-    req.data = "ok";
+    req.data = 'ok';
   } catch (e) {
     req.statusCode = 400;
     req.error = e.message;
