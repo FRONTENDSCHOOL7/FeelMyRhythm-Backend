@@ -8,12 +8,18 @@ const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 const Schema = mongoose.Schema;
 
 const userSchema = Schema({
+  _id: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   nickname: { type: String, required: true },
   intro: { type: String },
   kind: { type: String },
   image: { type: String },
+  isfollow: { type: Boolean },
+  following: { type: [String], default: [] },
+  follower: { type: [String], default: [] },
+  followerCount: { type: Number, default: 0 },
+  foloowerCount: { type: Number, default: 0 },
 });
 
 userSchema.methods.toJSON = function () {
