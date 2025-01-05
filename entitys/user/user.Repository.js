@@ -51,7 +51,11 @@ userRepository.getUserInfo = async (req, res, next) => {
 
     const { validTokenId } = req;
 
+    console.log('vato', validTokenId);
+
     const user = await User.findById(validTokenId);
+
+    console.log('user', user);
 
     if (!user) throw new Error('회원 정보를 조회할 수 없습니다.');
 
