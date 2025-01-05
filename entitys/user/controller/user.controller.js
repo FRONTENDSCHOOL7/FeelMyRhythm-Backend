@@ -28,4 +28,21 @@ userController.nicknameValid = async (req, res, next) => {
   next();
 };
 
+// 회원 정보 조회
+userController.getProfile = async (req, res, next) => {
+  try {
+    const { accountname } = req.params;
+
+    if (!accountname) {
+      throw new Error('잘못된 요청입니다.');
+    }
+
+    req.accountname = accountname;
+  } catch (e) {
+    req.statusCode = 400;
+    req.error = e.message;
+  }
+  next();
+};
+
 export default userController;

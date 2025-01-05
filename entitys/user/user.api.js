@@ -25,7 +25,10 @@ router.post('/valid', userRepository.valid, intercepter);
 // 닉네임 검증
 router.post('/nicknamevalid', userController.nicknameValid, userService.nicknameValid, intercepter);
 
-// 회원 정보 조회
+// 내 정보 조회
 router.get('/', authRepository.authenticate, userRepository.getUserInfo, intercepter);
+
+// 회원 정보 조회
+router.get('/:accountname', userController.getProfile, userService.getProfile, intercepter);
 
 export default router;

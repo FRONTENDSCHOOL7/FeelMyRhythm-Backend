@@ -52,4 +52,25 @@ userService.nicknameValid = async (req, res, next) => {
   next();
 };
 
+// 회원 정보 조회
+userService.getProfile = async (req, res, next) => {
+  try {
+    if (req.statusCode === 400) return next();
+
+    const { accountname } = req;
+    const user = await User.findOne({ accountname });
+
+    if (!user) {
+      throw new Error('사용자를 찾을 수 없습니다.');
+    }
+
+    req.statusCode = 200;
+    req.data = user;
+  } catch (e) {
+    req.statusCode = 400;
+    req.error = e.message;
+  }
+  next();
+};
+
 export default userService;
