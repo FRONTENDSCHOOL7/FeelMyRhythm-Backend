@@ -3,16 +3,16 @@ import User from '../user.Schema.js';
 const userService = {};
 
 // 회원가입
-userService.emailRegister = async (req, res, next) => {
+userService.register = async (req, res, next) => {
   try {
     if (req.statusCode === 400) return next();
 
     const { hashPassword } = req;
-    const { email, nickname, kind = 'emailuser' } = req.body;
+    const { accountname, nickname, kind = 'basicUser' } = req.body;
     const image = req.file.location;
 
     const newUser = new User({
-      email,
+      accountname,
       password: hashPassword,
       nickname,
       kind,
