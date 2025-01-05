@@ -10,17 +10,17 @@ const router = express.Router();
 
 // 회원가입
 router.post(
-  '/emailregister',
+  '/register',
   upload.single('image'),
-  userRepository.validEmail,
-  userController.emailRegister,
+  userRepository.valid,
+  userController.register,
   userRepository.hashPassword,
-  userService.emailRegister,
+  userService.register,
   intercepter
 );
 
 // 이메일 검증
-router.post('/emailvalid', userRepository.validEmail, intercepter);
+router.post('/valid', userRepository.valid, intercepter);
 
 // 닉네임 검증
 router.post('/nicknamevalid', userController.nicknameValid, userService.nicknameValid, intercepter);

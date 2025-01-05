@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 const authController = {};
 
-authController.loginWithEmail = async (req, res, next) => {
+authController.login = async (req, res, next) => {
   try {
     if (req.statusCode === 400) return next();
 

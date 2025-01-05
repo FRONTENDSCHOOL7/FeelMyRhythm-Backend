@@ -6,12 +6,6 @@ import authService from './service/auth.service.js';
 
 const router = express.Router();
 
-router.post(
-  '/emaillogin',
-  userRepository.validEmail,
-  authController.loginWithEmail,
-  authService.loginWithEmail,
-  intercepter
-);
+router.post('/login', userRepository.valid, authController.login, authService.login, intercepter);
 
 export default router;

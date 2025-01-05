@@ -1,6 +1,6 @@
 const authService = {};
 
-authService.loginWithEmail = async (req, res, next) => {
+authService.login = async (req, res, next) => {
   try {
     if (req.statusCode === 400) return next();
 

@@ -4,14 +4,14 @@ import bcrypt from 'bcryptjs';
 const userRepository = {};
 
 // 이메일 검증
-userRepository.validEmail = async (req, res, next) => {
+userRepository.valid = async (req, res, next) => {
   try {
     if (req.statusCode === 400) return next();
 
     const { originalUrl } = req;
-    const { email } = req.body;
+    const { accountname } = req.body;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ accountname });
 
     if (originalUrl.includes('login')) {
       if (!user) throw new Error('이메일 혹은 비밀번호가 일치하지 않습니다.');
