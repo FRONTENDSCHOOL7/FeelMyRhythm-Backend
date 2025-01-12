@@ -30,5 +30,4 @@ router.get('/', authRepository.authenticate, userRepository.getUserInfo, interce
 
 // 회원 정보 조회
 router.get('/:accountname', userController.getProfile, userService.getProfile, intercepter);
-
 export default router;
