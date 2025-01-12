@@ -16,7 +16,7 @@ userService.register = async (req, res, next) => {
       password: hashPassword,
       nickname,
       kind,
-      profileImage: image,
+      image,
     });
 
     await newUser.save();
